@@ -100,3 +100,78 @@ let callBackFullNames = function (inventor) {
 }
 const fullNames = inventors.map(callBackFullNames);
 /*----------------------------------------------------------------------*/
+
+
+
+
+
+
+// Array.prototype.sort()
+// 3. Sort the inventors by birthdate, oldest to youngest
+const buttonAge = document.querySelector('.js-buttonAge');
+const showAgeElement = document.querySelector('.js-showAge');
+
+
+
+
+inventors.forEach((inventor) => {
+    inventor.age = inventor.passed - inventor.year;
+})
+// console.table(inventors);
+
+
+let ascendingOrder = function (a,b) {
+    return a.age - b.age;
+}
+
+
+
+let ordred = inventors.sort(ascendingOrder);
+// console.table(ordred);
+
+
+let getAgeNames = function (showAgeNames,targetElement) {
+    let html = '';
+    for (const inventor of showAgeNames) {
+        let htmlElement = `<p>
+            <span>${inventor.first}</span>
+            <span>${inventor.last}</span>
+            <span>${inventor.age}</span>
+        </p>`
+        html += htmlElement;
+    }
+    targetElement.innerHTML = html;
+
+    // clear the result after 5 seconds
+    setTimeout(() => {
+        targetElement.innerHTML = '';
+    }, 5000);
+}
+buttonAge.addEventListener("click", () =>{
+    getAgeNames(ordred,showAgeElement);
+})
+/*---------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+// 7. sort Exercise
+// Sort the people alphabetically by last name
+const sortedPeople = [...people].sort((a, b) => {
+    const [lastA, firstA] = a.split(', ');
+    const [lastB, firstB] = b.split(', ');
+    return lastA.localeCompare(lastB);
+  });
+console.log(sortedPeople);
+
+
+
+
+
+
+
