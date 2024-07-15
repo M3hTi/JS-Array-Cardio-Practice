@@ -160,7 +160,7 @@ buttonAge.addEventListener("click", () =>{
 
 
 
-// 7. sort Exercise
+// 4. sort Exercise
 // Sort the people alphabetically by last name
 const sortedPeople = [...people].sort((a, b) => {
     const [lastA, firstA] = a.split(', ');
@@ -173,5 +173,21 @@ console.log(sortedPeople);
 
 
 
+
+
+
+ // 5. Reduce Exercise
+// Sum up the instances of each of these
+const data = ['car','car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van','car', 'truck'];
+const nameCounts = data.reduce(getNameCounts,{});
+function getNameCounts(accumulator,currentValue) {
+    if(accumulator[currentValue]){
+        accumulator[currentValue]++
+    }else{
+        accumulator[currentValue] = 1;
+    }
+    return accumulator;
+}
+console.table(nameCounts);
 
 
